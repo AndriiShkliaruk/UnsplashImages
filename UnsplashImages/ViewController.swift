@@ -7,24 +7,13 @@
 
 import UIKit
 
-struct APIResponse: Codable {
-    let results: [Result]
-}
 
-struct Result: Codable {
-    let id: String
-    let urls: URLS
-}
-
-struct URLS: Codable {
-    let full: String
-}
 
 class ViewController: UIViewController {
     
     let urlString = "https://api.unsplash.com/photos?per_page=30&client_id=-UBKtf-Pb9qNmEJR0mxnJsiR5NuAiMMyyKBnbkTlD6s"
     
-    var results: [Result] = []
+    var results: [UnsplashImage] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +27,7 @@ class ViewController: UIViewController {
             guard let data = data, error == nil else { return }
             
             do {
-                let jsonResult = try JSONDecoder().decode([Result].self, from: data)
+                let jsonResult = try JSONDecoder().decode([UnsplashImage].self, from: data)
                 self?.results = jsonResult
                 print(jsonResult.count)
             }
