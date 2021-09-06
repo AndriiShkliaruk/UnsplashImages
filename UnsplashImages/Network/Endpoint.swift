@@ -45,11 +45,17 @@ extension Endpoint {
         Endpoint(path: "/photos/\(id)")
     }
     
+    static func randomPhoto() -> Self {
+        Endpoint(path: "/photos/random")
+    }
+    
     static func searchPhotos(query: String, page: Int = 1, itemsPerPage: Int = 10) -> Self {
         Endpoint(path: "/search/photos", queryItems: [URLQueryItem(name: "query", value: String(query)),
                                                       URLQueryItem(name: "page", value: String(page)),
                                                       URLQueryItem(name: "per_page", value: String(itemsPerPage))])
     }
+    
+    
 }
 
 

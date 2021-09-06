@@ -7,14 +7,20 @@
 
 import Foundation
 
+struct SearchResponse: Decodable {
+    let total: Int
+    let totalPages: Int
+    let results: [UnsplashPhoto]
+}
+
 struct UnsplashTopic: Decodable {
     let id: String
     let title: String
     let totalPhotos: Int
-    let coverPhoto: UnsplashImage
+    let coverPhoto: UnsplashPhoto
 }
 
-struct UnsplashImage: Decodable {
+struct UnsplashPhoto: Decodable {
     let id: String
     let color: String
     let urls: URLs
