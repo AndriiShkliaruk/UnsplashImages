@@ -16,14 +16,18 @@ class TopicsViewController: UIViewController, UICollectionViewDataSource {
         super.viewDidLoad()
 
         let layout = UICollectionViewFlowLayout()
+        
+        let spacing: CGFloat = 10
+        
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        layout.itemSize = CGSize(width: view.frame.size.width / 2, height: view.frame.size.width / 2)
+        layout.minimumLineSpacing = spacing
+        layout.minimumInteritemSpacing = spacing
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        layout.itemSize = CGSize(width: view.frame.size.width / 2 - 15, height: view.frame.size.width / 2 - 15)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
-        collectionView.register(ImageCollectionViewCell.self,
-                                forCellWithReuseIdentifier: ImageCollectionViewCell.identifier)
+        collectionView.register(PhotoCollectionViewCell.self,
+                                forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
         collectionView.dataSource = self
         view.addSubview(collectionView)
         collectionView.backgroundColor = .systemBackground
@@ -44,11 +48,12 @@ class TopicsViewController: UIViewController, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let coverPhotoURL = topics[indexPath.row].coverPhoto.urls.small
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.identifier, for: indexPath) as? ImageCollectionViewCell else {
+        let title = topics[indexPath.row].title
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell else {
             return UICollectionViewCell()
         }
         
-        cell.configure(with: coverPhotoURL)
+        cell.configure(with: coverPhotoURL, title: title)
         return cell
     }
     

@@ -12,7 +12,7 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDataSource, UISearchBarDelegate {
     
     private var collectionView: UICollectionView?
-    var results: [UnsplashTopic] = []
+    var results = [UnsplashPhoto]()
     let searchbar = UISearchBar()
 
     override func viewDidLoad() {
@@ -26,23 +26,26 @@ class ViewController: UIViewController, UICollectionViewDataSource, UISearchBarD
         layout.itemSize = CGSize(width: view.frame.size.width / 2, height: view.frame.size.width / 2)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
-        collectionView.register(ImageCollectionViewCell.self,
-                                forCellWithReuseIdentifier: ImageCollectionViewCell.identifier)
+        collectionView.register(PhotoCollectionViewCell.self,
+                                forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
         collectionView.dataSource = self
         view.addSubview(collectionView)
         collectionView.backgroundColor = .systemBackground
         self.collectionView = collectionView
         
 
-        let url = Endpoint.topics(itemsPerPage: 4).url
-        DataLoader.get(from: url) { (result: Result<[UnsplashTopic], DataError>) in
-            switch result {
-            case .failure(let error):
-                print(error.localizedDescription)
-            case .success(let topics):
-                print(topics)
-            }
-        }
+//        let url = Endpoint.topics(itemsPerPage: 4).url
+//        DataLoader.get(from: url) { (result: Result<[UnsplashImage], DataError>) in
+//            switch result {
+//            case .failure(let error):
+//                print(error.localizedDescription)
+//            case .success(let topics):
+//                DispatchQueue.main.async {
+//                    self.results = topics
+//                    self.collectionView?.reloadData()
+//                }
+//            }
+//        }
         
     }
     
@@ -57,46 +60,34 @@ class ViewController: UIViewController, UICollectionViewDataSource, UISearchBarD
         searchbar.resignFirstResponder()
         if let text = searchbar.text {
             results = []
-            collectionView?.reloadData()
-            loadData(.searchPhotos(query: text))
-        }
-    }
-    
-    
-    func loadData(_ endpoint: Endpoint) {
-        //guard let url = endpoint.url else { return }
-        let url = endpoint.url
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
-            guard let data = data, error == nil else { return }
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            do {
-                let jsonResult = try decoder.decode([UnsplashTopic].self, from: data)
-                DispatchQueue.main.async {
-                    self?.results = jsonResult
-                    self?.collectionView?.reloadData()
+            DataLoader.get(from: Endpoint.searchPhotos(query: text, itemsPerPage: 50).url) { (result: Result<SearchResponse, DataError>) in
+                switch result {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case .success(let images):
+                    DispatchQueue.main.async {
+                        self.results = images.results
+                        self.collectionView?.reloadData()
+                    }
                 }
             }
-            catch {
-                print("ERROR - - - \(error)")
-            }
         }
-        
-        task.resume()
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return results.count
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let coverPhotoURL = results[indexPath.row].coverPhoto.urls.small
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.identifier, for: indexPath) as? ImageCollectionViewCell else {
+        let coverPhotoURL = results[indexPath.row].urls.small
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell else {
             return UICollectionViewCell()
         }
         
-        cell.configure(with: coverPhotoURL)
+       // cell.configure(with: coverPhotoURL)
         return cell
     }
 
