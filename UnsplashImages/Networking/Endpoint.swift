@@ -31,12 +31,12 @@ struct Endpoint {
 
 extension Endpoint {
     
-    static func topics(page: Int = 1, itemsPerPage: Int = 10) -> Self {
+    static func topics(page: Int = 1, itemsPerPage: Int = 30) -> Self {
         Endpoint(path: "/topics", queryItems: [URLQueryItem(name: "page", value: String(page)),
                                               URLQueryItem(name: "per_page", value: String(itemsPerPage))])
     }
     
-    static func topicPhotos(id: String, page: Int = 1, itemsPerPage: Int = 10) -> Self {
+    static func topicsPhotos(id: String, page: Int = 1, itemsPerPage: Int = 30) -> Self {
         Endpoint(path: "/topics/\(id)/photos", queryItems: [URLQueryItem(name: "page", value: String(page)),
                                                            URLQueryItem(name: "per_page", value: String(itemsPerPage))])
     }
@@ -49,7 +49,7 @@ extension Endpoint {
         Endpoint(path: "/photos/random")
     }
     
-    static func searchPhotos(query: String, page: Int = 1, itemsPerPage: Int = 10) -> Self {
+    static func searchPhotos(query: String, page: Int = 1, itemsPerPage: Int = 30) -> Self {
         Endpoint(path: "/search/photos", queryItems: [URLQueryItem(name: "query", value: String(query)),
                                                       URLQueryItem(name: "page", value: String(page)),
                                                       URLQueryItem(name: "per_page", value: String(itemsPerPage))])

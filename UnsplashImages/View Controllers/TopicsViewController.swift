@@ -7,16 +7,16 @@
 
 import UIKit
 
-class TopicsViewController: UIViewController, UICollectionViewDataSource {
+class TopicsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
         
-    private var collectionView: UICollectionView?
+    @IBOutlet weak var topicsCollectionView: UICollectionView!
+    
     var topics = [UnsplashTopic]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let layout = UICollectionViewFlowLayout()
-        
         let spacing: CGFloat = 10
         
         layout.scrollDirection = .vertical
@@ -29,17 +29,18 @@ class TopicsViewController: UIViewController, UICollectionViewDataSource {
         collectionView.register(PhotoCollectionViewCell.self,
                                 forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
         collectionView.dataSource = self
+        collectionView.delegate = self
         view.addSubview(collectionView)
         collectionView.backgroundColor = .systemBackground
-        self.collectionView = collectionView
+        self.topicsCollectionView = collectionView
         
         loadTopics()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        collectionView?.frame = view.bounds
+
+        topicsCollectionView?.frame = view.bounds
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -53,12 +54,28 @@ class TopicsViewController: UIViewController, UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.configure(with: coverPhotoURL, title: title)
+        cell.configure(with: coverPhotoURL, title: title, cellType: .topic)
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "topicsPhotosSegue", sender: indexPath)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+        if segue.identifier == "topicsPhotosSegue" {
+            if let destinationViewController = segue.destination as? PhotoGalleryViewController {
+                if let indexPath = sender as? IndexPath {
+                    destinationViewController.topicData = topics[indexPath.row]
+                }
+            }
+        }
+    }
+    
+    
     fileprivate func loadTopics() {
-        let url = Endpoint.topics(itemsPerPage: 20).url
+        let url = Endpoint.topics().url
         DataLoader.get(from: url) { (result: Result<[UnsplashTopic], DataError>) in
             switch result {
             case .failure(let error):
@@ -66,7 +83,7 @@ class TopicsViewController: UIViewController, UICollectionViewDataSource {
             case .success(let results):
                 DispatchQueue.main.async {
                     self.topics = results
-                    self.collectionView?.reloadData()
+                    self.topicsCollectionView?.reloadData()
                 }
             }
         }

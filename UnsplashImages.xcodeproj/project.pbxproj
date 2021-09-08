@@ -19,7 +19,8 @@
 		F98F817E26E4CDAE00AD5EAD /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98F817D26E4CDAE00AD5EAD /* PhotoCollectionViewCell.swift */; };
 		F9A8528726E61082001232DB /* RandomPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A8528626E61082001232DB /* RandomPhotoViewController.swift */; };
 		F9A8528926E61096001232DB /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A8528826E61096001232DB /* TopicsViewController.swift */; };
-		F9A8528B26E610A6001232DB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A8528A26E610A6001232DB /* SearchViewController.swift */; };
+		F9A8529326E8B89D001232DB /* PhotoGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A8529226E8B89C001232DB /* PhotoGalleryViewController.swift */; };
+		F9A8529526E90554001232DB /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A8529426E90554001232DB /* PhotoDetailViewController.swift */; };
 		F9C3021B26DFCE85001F0429 /* UnsplashModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C3021A26DFCE85001F0429 /* UnsplashModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +39,8 @@
 		F98F817D26E4CDAE00AD5EAD /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		F9A8528626E61082001232DB /* RandomPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoViewController.swift; sourceTree = "<group>"; };
 		F9A8528826E61096001232DB /* TopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
-		F9A8528A26E610A6001232DB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		F9A8529226E8B89C001232DB /* PhotoGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryViewController.swift; sourceTree = "<group>"; };
+		F9A8529426E90554001232DB /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 		F9C3021A26DFCE85001F0429 /* UnsplashModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,55 +74,56 @@
 		F96BC3FC26DD40AB001B0A25 /* UnsplashImages */ = {
 			isa = PBXGroup;
 			children = (
-				F98F817026E37E7D00AD5EAD /* Network */,
-				F98F816D26E351F700AD5EAD /* Model */,
 				F96BC3FD26DD40AB001B0A25 /* AppDelegate.swift */,
 				F96BC3FF26DD40AB001B0A25 /* SceneDelegate.swift */,
 				F96BC40126DD40AB001B0A25 /* ViewController.swift */,
-				F96BC40326DD40AB001B0A25 /* Main.storyboard */,
-				F9A8528C26E610B6001232DB /* ViewControllers */,
+				F98F817026E37E7D00AD5EAD /* Networking */,
+				F98F816D26E351F700AD5EAD /* Models */,
+				F9A8528D26E614EE001232DB /* Views */,
+				F9A8528C26E610B6001232DB /* View Controllers */,
 				F96BC40626DD40AC001B0A25 /* Assets.xcassets */,
-				F96BC40826DD40AC001B0A25 /* LaunchScreen.storyboard */,
 				F96BC40B26DD40AC001B0A25 /* Info.plist */,
 			);
 			path = UnsplashImages;
 			sourceTree = "<group>";
 		};
-		F98F816D26E351F700AD5EAD /* Model */ = {
+		F98F816D26E351F700AD5EAD /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				F9C3021A26DFCE85001F0429 /* UnsplashModel.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		F98F817026E37E7D00AD5EAD /* Network */ = {
+		F98F817026E37E7D00AD5EAD /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				F98F817326E37EAE00AD5EAD /* Endpoint.swift */,
 				F98F817726E3814400AD5EAD /* UnsplashConfiguration.swift */,
 				F98F817B26E3BD3E00AD5EAD /* DataLoader.swift */,
 			);
-			path = Network;
+			path = Networking;
 			sourceTree = "<group>";
 		};
-		F9A8528C26E610B6001232DB /* ViewControllers */ = {
+		F9A8528C26E610B6001232DB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F9A8528D26E614EE001232DB /* Components */,
 				F9A8528626E61082001232DB /* RandomPhotoViewController.swift */,
+				F9A8529426E90554001232DB /* PhotoDetailViewController.swift */,
 				F9A8528826E61096001232DB /* TopicsViewController.swift */,
-				F9A8528A26E610A6001232DB /* SearchViewController.swift */,
+				F9A8529226E8B89C001232DB /* PhotoGalleryViewController.swift */,
 			);
-			path = ViewControllers;
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		F9A8528D26E614EE001232DB /* Components */ = {
+		F9A8528D26E614EE001232DB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F96BC40826DD40AC001B0A25 /* LaunchScreen.storyboard */,
+				F96BC40326DD40AB001B0A25 /* Main.storyboard */,
 				F98F817D26E4CDAE00AD5EAD /* PhotoCollectionViewCell.swift */,
 			);
-			path = Components;
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,16 +197,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F98F817826E3814400AD5EAD /* UnsplashConfiguration.swift in Sources */,
-				F9A8528B26E610A6001232DB /* SearchViewController.swift in Sources */,
 				F96BC40226DD40AB001B0A25 /* ViewController.swift in Sources */,
 				F98F817E26E4CDAE00AD5EAD /* PhotoCollectionViewCell.swift in Sources */,
 				F96BC3FE26DD40AB001B0A25 /* AppDelegate.swift in Sources */,
 				F9A8528726E61082001232DB /* RandomPhotoViewController.swift in Sources */,
 				F96BC40026DD40AB001B0A25 /* SceneDelegate.swift in Sources */,
+				F9A8529526E90554001232DB /* PhotoDetailViewController.swift in Sources */,
 				F98F817C26E3BD3E00AD5EAD /* DataLoader.swift in Sources */,
 				F9C3021B26DFCE85001F0429 /* UnsplashModel.swift in Sources */,
 				F9A8528926E61096001232DB /* TopicsViewController.swift in Sources */,
 				F98F817426E37EAE00AD5EAD /* Endpoint.swift in Sources */,
+				F9A8529326E8B89D001232DB /* PhotoGalleryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,9 +28,9 @@ struct UnsplashPhoto: Decodable {
 }
 
 struct URLs: Decodable {
-    let raw, full, regular, small, thumb : String
+    let raw, full, regular, small, thumb : URL
 }
 
 struct Links: Decodable {
-    let download: String
+    let download: URL
 }
