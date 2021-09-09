@@ -27,10 +27,7 @@ class RandomPhotoViewController: UIViewController {
             case .failure(let error):
                 print(error.localizedDescription)
             case .success(let photo):
-                guard let url = URL(string: photo.urls.regular) else {
-                    return
-                }
-                URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+                URLSession.shared.dataTask(with: photo.urls.regular) { [weak self] data, _, error in
                     guard let data = data, error == nil else {
                         return
                     }

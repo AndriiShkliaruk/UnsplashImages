@@ -34,3 +34,4 @@ struct URLs: Decodable {
 struct Links: Decodable {
     let download: URL
 }
+

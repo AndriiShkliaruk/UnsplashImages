@@ -11,7 +11,6 @@ class DataLoader {
     typealias Completion<T> = (Result<T, DataError>) -> Void
     
     static func get<T: Decodable>(from url: URL, completion: @escaping Completion<T>) {
-        
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 completion(.failure(.network(error)))

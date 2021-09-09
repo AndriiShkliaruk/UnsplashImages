@@ -15,7 +15,7 @@ class TopicsViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 10
         
@@ -74,7 +74,7 @@ class TopicsViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     
-    fileprivate func loadTopics() {
+    func loadTopics() {
         let url = Endpoint.topics().url
         DataLoader.get(from: url) { (result: Result<[UnsplashTopic], DataError>) in
             switch result {
