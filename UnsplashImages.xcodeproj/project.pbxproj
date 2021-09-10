@@ -14,7 +14,6 @@
 		F96BC40726DD40AC001B0A25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F96BC40626DD40AC001B0A25 /* Assets.xcassets */; };
 		F96BC40A26DD40AC001B0A25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F96BC40826DD40AC001B0A25 /* LaunchScreen.storyboard */; };
 		F976DBAA26EA13E4007C8B0E /* SearchPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F976DBA926EA13E4007C8B0E /* SearchPhotosViewController.swift */; };
-		F976DBAC26EA5FDE007C8B0E /* PhotosCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F976DBAB26EA5FDE007C8B0E /* PhotosCollectionView.swift */; };
 		F98F817426E37EAE00AD5EAD /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98F817326E37EAE00AD5EAD /* Endpoint.swift */; };
 		F98F817826E3814400AD5EAD /* UnsplashConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98F817726E3814400AD5EAD /* UnsplashConfiguration.swift */; };
 		F98F817C26E3BD3E00AD5EAD /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98F817B26E3BD3E00AD5EAD /* DataLoader.swift */; };
@@ -24,6 +23,7 @@
 		F9A8529326E8B89D001232DB /* PhotoGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A8529226E8B89C001232DB /* PhotoGalleryViewController.swift */; };
 		F9A8529526E90554001232DB /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A8529426E90554001232DB /* PhotoDetailViewController.swift */; };
 		F9C3021B26DFCE85001F0429 /* UnsplashModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C3021A26DFCE85001F0429 /* UnsplashModel.swift */; };
+		F9D4DD5426EB62E0003EF6B7 /* PhotoGridUICollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D4DD5326EB62E0003EF6B7 /* PhotoGridUICollectionViewFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +36,6 @@
 		F96BC40926DD40AC001B0A25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F96BC40B26DD40AC001B0A25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F976DBA926EA13E4007C8B0E /* SearchPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPhotosViewController.swift; sourceTree = "<group>"; };
-		F976DBAB26EA5FDE007C8B0E /* PhotosCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionView.swift; sourceTree = "<group>"; };
 		F98F817326E37EAE00AD5EAD /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		F98F817726E3814400AD5EAD /* UnsplashConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashConfiguration.swift; sourceTree = "<group>"; };
 		F98F817B26E3BD3E00AD5EAD /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
@@ -46,6 +45,7 @@
 		F9A8529226E8B89C001232DB /* PhotoGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryViewController.swift; sourceTree = "<group>"; };
 		F9A8529426E90554001232DB /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 		F9C3021A26DFCE85001F0429 /* UnsplashModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashModel.swift; sourceTree = "<group>"; };
+		F9D4DD5326EB62E0003EF6B7 /* PhotoGridUICollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridUICollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,12 +124,20 @@
 		F9A8528D26E614EE001232DB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F9D4DD5526EB6C58003EF6B7 /* Components */,
 				F96BC40826DD40AC001B0A25 /* LaunchScreen.storyboard */,
 				F96BC40326DD40AB001B0A25 /* Main.storyboard */,
-				F98F817D26E4CDAE00AD5EAD /* PhotoCollectionViewCell.swift */,
-				F976DBAB26EA5FDE007C8B0E /* PhotosCollectionView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F9D4DD5526EB6C58003EF6B7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F98F817D26E4CDAE00AD5EAD /* PhotoCollectionViewCell.swift */,
+				F9D4DD5326EB62E0003EF6B7 /* PhotoGridUICollectionViewFlowLayout.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,9 +211,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F98F817826E3814400AD5EAD /* UnsplashConfiguration.swift in Sources */,
-				F976DBAC26EA5FDE007C8B0E /* PhotosCollectionView.swift in Sources */,
 				F96BC40226DD40AB001B0A25 /* ViewController.swift in Sources */,
 				F98F817E26E4CDAE00AD5EAD /* PhotoCollectionViewCell.swift in Sources */,
+				F9D4DD5426EB62E0003EF6B7 /* PhotoGridUICollectionViewFlowLayout.swift in Sources */,
 				F96BC3FE26DD40AB001B0A25 /* AppDelegate.swift in Sources */,
 				F9A8528726E61082001232DB /* RandomPhotoViewController.swift in Sources */,
 				F96BC40026DD40AB001B0A25 /* SceneDelegate.swift in Sources */,

@@ -16,14 +16,7 @@ class TopicsViewController: UIViewController, UICollectionViewDataSource, UIColl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let layout = UICollectionViewFlowLayout()
-        let spacing: CGFloat = 10
-        
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = spacing
-        layout.minimumInteritemSpacing = spacing
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
-        layout.itemSize = CGSize(width: view.frame.size.width / 2 - 15, height: view.frame.size.width / 2 - 15)
+        let layout = PhotoGridUICollectionViewFlowLayout(cellsInRow: 2, spaceBetweenCells: 10)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
         collectionView.register(PhotoCollectionViewCell.self,

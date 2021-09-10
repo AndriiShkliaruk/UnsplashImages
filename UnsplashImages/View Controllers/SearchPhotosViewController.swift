@@ -17,12 +17,7 @@ class SearchPhotosViewController: UIViewController, UICollectionViewDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let layout = UICollectionViewFlowLayout()
-        
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        layout.itemSize = CGSize(width: view.frame.size.width / 2, height: view.frame.size.width / 2)
+        let layout = PhotoGridUICollectionViewFlowLayout(cellsInRow: 2, spaceBetweenCells: 0)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
         collectionView.register(PhotoCollectionViewCell.self,
@@ -41,7 +36,10 @@ class SearchPhotosViewController: UIViewController, UICollectionViewDataSource, 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        photosCollectionView?.frame = CGRect(x: 0, y: view.safeAreaInsets.top + 44, width: view.frame.size.width, height: view.frame.size.height - 44)
+        photosCollectionView?.frame = CGRect(x: 0, y: view.safeAreaInsets.top + searchBar.frame.size.height, width: view.frame.size.width, height: view.frame.size.height - searchBar.frame.size.height - 83)
+        print(self.tabBarController!.tabBar.frame.size.height)
+        
+        
     }
     
     

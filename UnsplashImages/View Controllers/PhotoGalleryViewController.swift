@@ -9,8 +9,6 @@ import UIKit
 
 class PhotoGalleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
-
-    
     @IBOutlet weak var photosCollectionView: UICollectionView!
     var topicData: UnsplashTopic?
     var photos = [UnsplashPhoto]()
@@ -21,12 +19,7 @@ class PhotoGalleryViewController: UIViewController, UICollectionViewDataSource, 
         guard let topic = topicData else { return }
         
         self.title = topic.title
-        let layout = UICollectionViewFlowLayout()
-        
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        layout.itemSize = CGSize(width: view.frame.size.width / 2, height: view.frame.size.width / 2)
+        let layout = PhotoGridUICollectionViewFlowLayout(cellsInRow: 2, spaceBetweenCells: 0)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
         collectionView.register(PhotoCollectionViewCell.self,
