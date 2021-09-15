@@ -22,7 +22,8 @@ class RandomPhotoViewController: UIViewController {
     
     
     fileprivate func loadNewPhoto() {
-        DataLoader.get(from: Endpoint.randomPhoto().url) { (result: Result<UnsplashPhoto, DataError>) in
+        let url = Endpoint.randomPhoto.url
+        DataLoader.get(from: url) { (result: Result<UnsplashPhoto, DataError>) in
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
@@ -35,6 +36,7 @@ class RandomPhotoViewController: UIViewController {
                     DispatchQueue.main.async {
                         let image = UIImage(data: data)
                         self?.randomPhoto.image = image
+                       
                     }
                 }.resume()
             }

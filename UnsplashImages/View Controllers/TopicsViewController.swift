@@ -68,7 +68,7 @@ class TopicsViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     
     func loadTopics() {
-        let url = Endpoint.topics().url
+        let url = Endpoint.topics.url
         DataLoader.get(from: url) { (result: Result<[UnsplashTopic], DataError>) in
             switch result {
             case .failure(let error):

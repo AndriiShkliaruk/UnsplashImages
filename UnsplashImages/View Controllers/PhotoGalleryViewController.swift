@@ -7,11 +7,12 @@
 
 import UIKit
 
-class PhotoGalleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class PhotoGalleryViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, WaterfallLayoutDelegate {
 
     @IBOutlet weak var photosCollectionView: UICollectionView!
     var topicData: UnsplashTopic?
-    var photos = [UnsplashPhoto]()
+    var photos = ResponseData()
+    typealias ResponseData = [UnsplashPhoto]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,13 +20,15 @@ class PhotoGalleryViewController: UIViewController, UICollectionViewDataSource, 
         guard let topic = topicData else { return }
         
         self.title = topic.title
-        let layout = PhotoGridUICollectionViewFlowLayout(cellsInRow: 2, spaceBetweenCells: 0)
+        //let layout = PhotoGridUICollectionViewFlowLayout(cellsInRow: 2, spaceBetweenCells: 0)
+        let layout = WaterfallLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
         collectionView.register(PhotoCollectionViewCell.self,
                                 forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
+        layout.delegate = self
         view.addSubview(collectionView)
         collectionView.backgroundColor = .systemBackground
         self.photosCollectionView = collectionView
@@ -38,6 +41,12 @@ class PhotoGalleryViewController: UIViewController, UICollectionViewDataSource, 
         super.viewDidLayoutSubviews()
 
         photosCollectionView?.frame = view.bounds
+    }
+    
+    func waterfallLayout(_ layout: WaterfallLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let photo = photos[indexPath.item]
+        return CGSize(width: photo.width, height: photo.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -71,8 +80,8 @@ class PhotoGalleryViewController: UIViewController, UICollectionViewDataSource, 
     
     
     fileprivate func loadPhotos(with topicId: String) {
-        let url = Endpoint.topicsPhotos(id: topicId).url
-        DataLoader.get(from: url) { (result: Result<[UnsplashPhoto], DataError>) in
+        let url = Endpoint.topicPhotos(id: topicId).url
+        DataLoader.get(from: url) { (result: Result<ResponseData, DataError>) in
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
@@ -84,6 +93,8 @@ class PhotoGalleryViewController: UIViewController, UICollectionViewDataSource, 
             }
         }
     }
+    
+
     
 
 }

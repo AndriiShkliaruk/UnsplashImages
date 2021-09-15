@@ -60,7 +60,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UISearchBarD
         searchbar.resignFirstResponder()
         if let text = searchbar.text {
             results = []
-            DataLoader.get(from: Endpoint.searchPhotos(query: text, itemsPerPage: 50).url) { (result: Result<SearchResponse, DataError>) in
+            DataLoader.get(from: Endpoint.searchPhotos(query: text).url) { (result: Result<SearchResponse, DataError>) in
                 switch result {
                 case .failure(let error):
                     print(error.localizedDescription)

@@ -34,21 +34,21 @@ class PhotoDetailViewController: UIViewController {
             DispatchQueue.main.async {
                 let image = UIImage(data: data)
                 self?.photoImageView.image = image
-            
+                
             }
         }.resume()
     }
     
     
     fileprivate func loadRandomPhoto() {
-        DataLoader.get(from: Endpoint.randomPhoto().url) { (result: Result<UnsplashPhoto, DataError>) in
+        let url = Endpoint.randomPhoto.url
+        DataLoader.get(from: url) { (result: Result<UnsplashPhoto, DataError>) in
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
             case .success(let photo):
                 
                 self.loadPhoto(from: photo.urls.regular)
-                
             }
         }
     }
