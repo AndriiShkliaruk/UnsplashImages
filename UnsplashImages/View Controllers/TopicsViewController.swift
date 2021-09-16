@@ -11,7 +11,7 @@ class TopicsViewController: UIViewController, UICollectionViewDataSource, UIColl
         
     @IBOutlet weak var topicsCollectionView: UICollectionView!
     
-    var topics = [UnsplashTopic]()
+    private var topics = [UnsplashTopic]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
