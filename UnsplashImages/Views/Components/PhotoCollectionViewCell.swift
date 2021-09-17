@@ -14,6 +14,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         return imageView
     }()
     
@@ -52,7 +53,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         label.text = nil
     }
     
-    func configure(with urlString: URL, title: String = "", cellType: PhotoCellType) {
+    func configure(with urlString: URL, title: String?) {
         
         let task = URLSession.shared.dataTask(with: urlString) { [weak self] data, _, error in
             guard let data = data, error == nil else {
@@ -61,18 +62,15 @@ class PhotoCollectionViewCell: UICollectionViewCell {
             
             DispatchQueue.main.async {
                 let image = UIImage(data: data)
-                
-                switch cellType {
-                case .photo:
-                    self?.imageView.image = image
-                    self?.label.isHidden = true
-                case .topic:
+
+                if let topicTitle = title {
+                    self?.label.text = topicTitle
                     self?.imageView.image = image?.darkened()
                     self?.imageView.layer.cornerRadius = 10.0
-                    self?.label.text = title
+                    print(topicTitle)
+                } else {
+                    self?.imageView.image = image
                 }
-                
-                print(title)
             }
         }
         task.resume()
@@ -80,9 +78,6 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
 }
 
-enum PhotoCellType {
-    case topic, photo
-}
 
 
 

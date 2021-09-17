@@ -53,7 +53,7 @@ class SearchPhotosViewController: UIViewController, UICollectionViewDataSource, 
             return UICollectionViewCell()
         }
         
-        cell.configure(with: photoURL, cellType: .photo)
+        cell.configure(with: photoURL, title: nil)
         return cell
     }
     

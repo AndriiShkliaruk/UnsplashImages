@@ -21,6 +21,7 @@
 		F9A54C1A26F2436D0079D46C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A54C1926F2436D0079D46C /* ViewController.swift */; };
 		F9A54C1D26F24EB90079D46C /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A54C1C26F24EB90079D46C /* UIKitExtensions.swift */; };
 		F9A54C1F26F2680A0079D46C /* TopicsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A54C1E26F2680A0079D46C /* TopicsCollectionViewController.swift */; };
+		F9A54C2126F503800079D46C /* GalleryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A54C2026F503800079D46C /* GalleryCollectionViewController.swift */; };
 		F9A8528726E61082001232DB /* RandomPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A8528626E61082001232DB /* RandomPhotoViewController.swift */; };
 		F9A8528926E61096001232DB /* TopicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A8528826E61096001232DB /* TopicsViewController.swift */; };
 		F9A8529326E8B89D001232DB /* PhotoGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A8529226E8B89C001232DB /* PhotoGalleryViewController.swift */; };
@@ -46,6 +47,7 @@
 		F9A54C1926F2436D0079D46C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F9A54C1C26F24EB90079D46C /* UIKitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
 		F9A54C1E26F2680A0079D46C /* TopicsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsCollectionViewController.swift; sourceTree = "<group>"; };
+		F9A54C2026F503800079D46C /* GalleryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewController.swift; sourceTree = "<group>"; };
 		F9A8528626E61082001232DB /* RandomPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPhotoViewController.swift; sourceTree = "<group>"; };
 		F9A8528826E61096001232DB /* TopicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsViewController.swift; sourceTree = "<group>"; };
 		F9A8529226E8B89C001232DB /* PhotoGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				F9A8529426E90554001232DB /* PhotoDetailViewController.swift */,
 				F9A8528826E61096001232DB /* TopicsViewController.swift */,
 				F9A8529226E8B89C001232DB /* PhotoGalleryViewController.swift */,
+				F9A54C2026F503800079D46C /* GalleryCollectionViewController.swift */,
 				F9A54C1E26F2680A0079D46C /* TopicsCollectionViewController.swift */,
 			);
 			path = "View Controllers";
@@ -234,6 +237,7 @@
 				F9A8528726E61082001232DB /* RandomPhotoViewController.swift in Sources */,
 				F96BC40026DD40AB001B0A25 /* SceneDelegate.swift in Sources */,
 				F9A54C1F26F2680A0079D46C /* TopicsCollectionViewController.swift in Sources */,
+				F9A54C2126F503800079D46C /* GalleryCollectionViewController.swift in Sources */,
 				F9A54C1D26F24EB90079D46C /* UIKitExtensions.swift in Sources */,
 				F9A54C1626F0FE270079D46C /* WaterfallLayout.swift in Sources */,
 				F9A8529526E90554001232DB /* PhotoDetailViewController.swift in Sources */,

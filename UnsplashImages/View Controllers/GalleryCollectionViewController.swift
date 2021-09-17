@@ -8,7 +8,7 @@
 import UIKit
 
 
-class GalleryCollectionViewController: UICollectionViewController {
+class GalleryCollectionViewController: UICollectionViewController, WaterfallLayoutDelegate {
     
     public var topicData: UnsplashTopic?
     private var photos = [UnsplashPhoto]()
@@ -33,7 +33,9 @@ class GalleryCollectionViewController: UICollectionViewController {
     }
     
     private func setupCollectionView() {
-        collectionView.delegate = self
+//        let layout = WaterfallLayout()
+//        layout.delegate = self
+//        collectionView.setCollectionViewLayout(layout, animated: true)
         collectionView.backgroundColor = .systemBackground
         collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
         collectionView.contentInsetAdjustmentBehavior = .automatic
@@ -65,7 +67,6 @@ class GalleryCollectionViewController: UICollectionViewController {
     
     func waterfallLayout(_ layout: WaterfallLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let photo = photos[indexPath.item]
-        print("HHHHHHHHHHHH")
         return CGSize(width: photo.width, height: photo.height)
     }
     
