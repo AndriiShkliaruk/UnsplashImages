@@ -8,9 +8,9 @@
 import UIKit
 
 
-class GalleryCollectionViewController: UICollectionViewController, WaterfallLayoutDelegate {
+class GalleryCollectionViewController: UICollectionViewController, GalleryLayoutDelegate {
     
-    public var topicData: UnsplashTopic?
+    var topicData: UnsplashTopic?
     private var photos = [UnsplashPhoto]()
 
     override func viewDidLoad() {
@@ -33,9 +33,6 @@ class GalleryCollectionViewController: UICollectionViewController, WaterfallLayo
     }
     
     private func setupCollectionView() {
-//        let layout = WaterfallLayout()
-//        layout.delegate = self
-//        collectionView.setCollectionViewLayout(layout, animated: true)
         collectionView.backgroundColor = .systemBackground
         collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
         collectionView.contentInsetAdjustmentBehavior = .automatic
@@ -63,9 +60,11 @@ class GalleryCollectionViewController: UICollectionViewController, WaterfallLayo
         navigateTo(photo: photos[indexPath.row])
     }
     
-    // MARK: - WaterfallLayoutDelegate
     
-    func waterfallLayout(_ layout: WaterfallLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    
+    // MARK: - GalleryLayoutDelegate
+    
+    func galleryLayout(_ layout: GalleryLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let photo = photos[indexPath.item]
         return CGSize(width: photo.width, height: photo.height)
     }
@@ -75,9 +74,9 @@ class GalleryCollectionViewController: UICollectionViewController, WaterfallLayo
     // MARK: - Navigation
 
     private func navigateTo(photo: UnsplashPhoto) {
-        let photoDetailViewController = PhotoDetailViewController()
-        photoDetailViewController.photoData = photo
-        navigationController?.pushViewController(photoDetailViewController, animated: true)
+        let photoViewController = PhotoViewController()
+        photoViewController.photoData = photo
+        navigationController?.pushViewController(photoViewController, animated: true)
     }
     
     

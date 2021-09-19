@@ -22,11 +22,16 @@ struct UnsplashTopic: Decodable {
 
 struct UnsplashPhoto: Decodable {
     let id: String
+    let user: User
     let width: Int
     let height: Int
     let color: String
     let urls: URLs
     let links: Links
+}
+
+struct User: Decodable {
+    let name: String
 }
 
 struct URLs: Decodable {

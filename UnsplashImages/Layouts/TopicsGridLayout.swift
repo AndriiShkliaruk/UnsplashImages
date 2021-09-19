@@ -1,5 +1,5 @@
 //
-//  PhotoGridUICollectionViewFlowLayout.swift
+//  TopicsGridLayout.swift
 //  UnsplashImages
 //
 //  Created by Andrii Shkliaruk on 10.09.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PhotoGridUICollectionViewFlowLayout: UICollectionViewFlowLayout {
+class TopicsGridLayout: UICollectionViewFlowLayout {
     
     let cellsInRow: Int
     let spaceBetweenCells: CGFloat

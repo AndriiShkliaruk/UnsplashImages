@@ -62,7 +62,7 @@ class TopicsCollectionViewController: UICollectionViewController {
     // MARK: - Navigation
 
     private func navigateToPhotos(from topic: UnsplashTopic) {
-        let galleryLayout = WaterfallLayout()
+        let galleryLayout = GalleryLayout()
         let galleryViewController = GalleryCollectionViewController(collectionViewLayout: galleryLayout)
         galleryLayout.delegate = galleryViewController
         galleryViewController.topicData = topic

@@ -14,14 +14,14 @@ class MainTabBarController: UITabBarController {
 
         view.backgroundColor = .systemBackground
         
-        let randomPhotoViewController = RandomPhotoViewController()
-        let topicsCollectionViewController = TopicsCollectionViewController(collectionViewLayout: PhotoGridUICollectionViewFlowLayout(cellsInRow: 2, spaceBetweenCells: 10))
-        let searchPhotosViewController = SearchPhotosViewController()
+        let photoViewController = PhotoViewController()
+        let topicsCollectionViewController = TopicsCollectionViewController(collectionViewLayout: TopicsGridLayout(cellsInRow: 2, spaceBetweenCells: 10))
+        let searchCollectionViewController = SearchCollectionViewController(collectionViewLayout: GalleryLayout())
         
         viewControllers = [
-            generateNavigationController(rootViewController: randomPhotoViewController, title: "Random Photo", image: #imageLiteral(resourceName: "die.face.3")),
+            generateNavigationController(rootViewController: photoViewController, title: "Random Photo", image: #imageLiteral(resourceName: "die.face.3")),
             generateNavigationController(rootViewController: topicsCollectionViewController, title: "Topics", image: #imageLiteral(resourceName: "square.3.stack.3d.top.fill")),
-            generateNavigationController(rootViewController: searchPhotosViewController, title: "Search", image: #imageLiteral(resourceName: "magnifyingglass"))
+            generateNavigationController(rootViewController: searchCollectionViewController, title: "Search", image: #imageLiteral(resourceName: "magnifyingglass"))
         ]
         
         

@@ -53,9 +53,9 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         label.text = nil
     }
     
-    func configure(with urlString: URL, title: String?) {
+    func configure(with url: URL, title: String?) {
         
-        let task = URLSession.shared.dataTask(with: urlString) { [weak self] data, _, error in
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
             guard let data = data, error == nil else {
                 return
             }

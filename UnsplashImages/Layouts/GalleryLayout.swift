@@ -1,5 +1,5 @@
 //
-//  WaterfallLayout.swift
+//  GalleryLayout.swift
 //  Unsplash
 //
 //  Created by Olivier Collet on 2017-07-29.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-protocol WaterfallLayoutDelegate: AnyObject {
-    func waterfallLayout(_ layout: WaterfallLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+protocol GalleryLayoutDelegate: AnyObject {
+    func galleryLayout(_ layout: GalleryLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
 }
 
-class WaterfallLayout: UICollectionViewLayout {
+class GalleryLayout: UICollectionViewLayout {
     
     // MARK: - Public properties
     
-    weak var delegate: WaterfallLayoutDelegate!
+    weak var delegate: GalleryLayoutDelegate!
     
     var topInset: CGFloat = 16 {
         didSet {
@@ -36,7 +36,7 @@ class WaterfallLayout: UICollectionViewLayout {
     private var numberOfColumns: Int {
         guard let collectionView = collectionView else { return 1 }
         
-        let numberOfColumns = WaterfallLayout.numberOfColumns(for: collectionView.frame.width)
+        let numberOfColumns = GalleryLayout.numberOfColumns(for: collectionView.frame.width)
         return min(numberOfColumns, 3)
     }
     
@@ -150,7 +150,7 @@ class WaterfallLayout: UICollectionViewLayout {
         
         for index in 0 ..< numberOfItems {
             let indexPath = IndexPath(item: index, section: 0)
-            let itemSize = delegate.waterfallLayout(self, sizeForItemAt: indexPath)
+            let itemSize = delegate.galleryLayout(self, sizeForItemAt: indexPath)
             let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             let columnIndex = indexOfNextColumn()
             let origin = originForColumn(columnIndex)
