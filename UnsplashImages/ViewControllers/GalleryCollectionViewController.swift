@@ -34,7 +34,7 @@ class GalleryCollectionViewController: UICollectionViewController, GalleryLayout
     
     private func setupCollectionView() {
         collectionView.backgroundColor = .systemBackground
-        collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
+        collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.identifier)
         collectionView.contentInsetAdjustmentBehavior = .automatic
     }
     
@@ -47,12 +47,10 @@ class GalleryCollectionViewController: UICollectionViewController, GalleryLayout
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let photoURL = photos[indexPath.row].urls.small
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.identifier, for: indexPath) as? PhotoCell else {
             return UICollectionViewCell()
         }
-        
-        cell.configure(with: photoURL, title: nil)
+        cell.unsplashPhoto = photos[indexPath.row]
         return cell
     }
     

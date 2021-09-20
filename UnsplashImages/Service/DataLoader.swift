@@ -42,6 +42,7 @@ class DataLoader {
 
 }
 
+
 enum DataError: Error {
     case network(Error)
     case invalidResponse

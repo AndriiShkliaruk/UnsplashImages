@@ -10,12 +10,19 @@ import UIKit
 class TopicsCollectionViewController: UICollectionViewController {
 
     private var topics = [UnsplashTopic]()
+    
+    private let spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .medium)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        return spinner
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationBar()
         setupCollectionView()
+        setupSpinner()
         loadTopics()
     }
     
@@ -29,9 +36,15 @@ class TopicsCollectionViewController: UICollectionViewController {
     
     private func setupCollectionView() {
         collectionView.backgroundColor = .systemBackground
-        
-        collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
+        collectionView.clipsToBounds = true
+        collectionView.register(TopicCell.self, forCellWithReuseIdentifier: TopicCell.identifier)
         collectionView.contentInsetAdjustmentBehavior = .automatic
+    }
+    
+    private func setupSpinner() {
+        view.addSubview(spinner)
+        spinner.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: collectionView.centerYAnchor).isActive = true
     }
     
     
@@ -43,13 +56,13 @@ class TopicsCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let coverPhotoURL = topics[indexPath.row].coverPhoto.urls.small
-        let title = topics[indexPath.row].title
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell else {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopicCell.identifier, for: indexPath) as? TopicCell else {
             return UICollectionViewCell()
         }
         
-        cell.configure(with: coverPhotoURL, title: title)
+        cell.unsplashPhoto = topics[indexPath.row].coverPhoto
+        cell.title = topics[indexPath.row].title
         return cell
     }
     
@@ -74,6 +87,7 @@ class TopicsCollectionViewController: UICollectionViewController {
     //MARK: - Networking
     
     func loadTopics() {
+        spinner.startAnimating()
         let url = Endpoint.topics.url
         DataLoader.get(from: url) { (result: Result<[UnsplashTopic], DataError>) in
             switch result {
@@ -83,9 +97,11 @@ class TopicsCollectionViewController: UICollectionViewController {
                 DispatchQueue.main.async {
                     self.topics = results
                     self.collectionView.reloadData()
+                    self.spinner.stopAnimating()
                 }
             }
         }
     }
+    
 
 }
