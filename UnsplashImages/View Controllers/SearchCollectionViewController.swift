@@ -15,30 +15,29 @@ class SearchCollectionViewController: UICollectionViewController, GalleryLayoutD
     
     private let enterLabel: UILabel = {
         let label = UILabel()
-        label.text = "Please enter search term above..."
-        
         label.textAlignment = .center
-        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textColor = .gray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let spinner: UIActivityIndicatorView = {
-        let spinner = UIActivityIndicatorView(style: .medium)
+        let spinner = UIActivityIndicatorView(style: .large)
         spinner.translatesAutoresizingMaskIntoConstraints = false
         return spinner
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupNavigationBar()
         setupCollectionView()
         setupSearchBar()
         setupEnterLabel()
         setupSpinner()
-        
     }
+    
+    
     
     //MARK: - Setup UI Elements
     
@@ -72,7 +71,7 @@ class SearchCollectionViewController: UICollectionViewController, GalleryLayoutD
     private func setupSearchBar() {
         let searchController = UISearchController(searchResultsController: nil)
         navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.hidesSearchBarWhenScrolling = true
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
@@ -84,6 +83,12 @@ class SearchCollectionViewController: UICollectionViewController, GalleryLayoutD
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         enterLabel.isHidden = photos.count != 0
+        if navigationItem.searchController?.searchBar.text == "" {
+            enterLabel.text = "Please enter search term above..."
+        } else {
+            enterLabel.text = "No results..."
+        }
+        
         return photos.count
     }
     
@@ -95,7 +100,7 @@ class SearchCollectionViewController: UICollectionViewController, GalleryLayoutD
         cell.unsplashPhoto = photos[indexPath.row]
         return cell
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         navigateTo(photo: photos[indexPath.row])
     }
@@ -110,26 +115,28 @@ class SearchCollectionViewController: UICollectionViewController, GalleryLayoutD
     }
     
     
+    
     // MARK: - UISearchBarDelegate
-
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            self.spinner.startAnimating()
-            timer?.invalidate()
+        self.spinner.startAnimating()
+        timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false, block: { (_) in
-                self.loadPhotosBy(query: searchText)
-                print(searchText)
-            })
-        }
+            self.loadPhotosBy(query: searchText)
+            print(searchText)
+        })
+    }
     
     
     
     // MARK: - Navigation
-
+    
     private func navigateTo(photo: UnsplashPhoto) {
         let photoViewController = PhotoViewController()
         photoViewController.photoData = photo
         navigationController?.pushViewController(photoViewController, animated: true)
     }
+    
     
     
     // MARK: - Networking

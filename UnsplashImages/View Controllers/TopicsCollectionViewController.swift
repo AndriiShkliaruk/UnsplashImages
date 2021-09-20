@@ -45,6 +45,7 @@ class TopicsCollectionViewController: UICollectionViewController {
         view.addSubview(spinner)
         spinner.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor).isActive = true
         spinner.centerYAnchor.constraint(equalTo: collectionView.centerYAnchor).isActive = true
+        spinner.startAnimating()
     }
     
     
@@ -87,7 +88,6 @@ class TopicsCollectionViewController: UICollectionViewController {
     //MARK: - Networking
     
     func loadTopics() {
-        spinner.startAnimating()
         let url = Endpoint.topics.url
         DataLoader.get(from: url) { (result: Result<[UnsplashTopic], DataError>) in
             switch result {

@@ -18,11 +18,10 @@
 		F98F817E26E4CDAE00AD5EAD /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98F817D26E4CDAE00AD5EAD /* PhotoCell.swift */; };
 		F9A54C1626F0FE270079D46C /* GalleryLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A54C1526F0FE270079D46C /* GalleryLayout.swift */; };
 		F9A54C1826F23C460079D46C /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A54C1726F23C460079D46C /* MainTabBarController.swift */; };
-		F9A54C1D26F24EB90079D46C /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A54C1C26F24EB90079D46C /* UIImage.swift */; };
 		F9A54C1F26F2680A0079D46C /* TopicsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A54C1E26F2680A0079D46C /* TopicsCollectionViewController.swift */; };
 		F9A54C2126F503800079D46C /* GalleryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A54C2026F503800079D46C /* GalleryCollectionViewController.swift */; };
 		F9A8529526E90554001232DB /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A8529426E90554001232DB /* PhotoViewController.swift */; };
-		F9C3021B26DFCE85001F0429 /* UnsplashModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C3021A26DFCE85001F0429 /* UnsplashModels.swift */; };
+		F9C3021B26DFCE85001F0429 /* UnsplashModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C3021A26DFCE85001F0429 /* UnsplashModel.swift */; };
 		F9D4DD5426EB62E0003EF6B7 /* TopicsGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D4DD5326EB62E0003EF6B7 /* TopicsGridLayout.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,11 +41,10 @@
 		F98F817D26E4CDAE00AD5EAD /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		F9A54C1526F0FE270079D46C /* GalleryLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryLayout.swift; sourceTree = "<group>"; };
 		F9A54C1726F23C460079D46C /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		F9A54C1C26F24EB90079D46C /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		F9A54C1E26F2680A0079D46C /* TopicsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsCollectionViewController.swift; sourceTree = "<group>"; };
 		F9A54C2026F503800079D46C /* GalleryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewController.swift; sourceTree = "<group>"; };
 		F9A8529426E90554001232DB /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
-		F9C3021A26DFCE85001F0429 /* UnsplashModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashModels.swift; sourceTree = "<group>"; };
+		F9C3021A26DFCE85001F0429 /* UnsplashModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashModel.swift; sourceTree = "<group>"; };
 		F9D4DD5326EB62E0003EF6B7 /* TopicsGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsGridLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,7 +77,7 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		F91E19E126F7A96100C77529 /* ViewControllers */ = {
+		F91E19E126F7A96100C77529 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				F9A8529426E90554001232DB /* PhotoViewController.swift */,
@@ -87,16 +85,19 @@
 				F91E19E326F7AF2700C77529 /* SearchCollectionViewController.swift */,
 				F9A54C2026F503800079D46C /* GalleryCollectionViewController.swift */,
 			);
-			path = ViewControllers;
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		F91E19E226F7AA1F00C77529 /* ViewCells */ = {
+		F91E19E726F8A6EB00C77529 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F9A54C1526F0FE270079D46C /* GalleryLayout.swift */,
+				F9D4DD5326EB62E0003EF6B7 /* TopicsGridLayout.swift */,
 				F98F817D26E4CDAE00AD5EAD /* PhotoCell.swift */,
 				F91E19E526F8870900C77529 /* TopicCell.swift */,
 			);
-			path = ViewCells;
+			name = Views;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		F96BC3F126DD40AB001B0A25 = {
@@ -123,12 +124,10 @@
 				F9A54C1726F23C460079D46C /* MainTabBarController.swift */,
 				F96BC3FD26DD40AB001B0A25 /* AppDelegate.swift */,
 				F96BC3FF26DD40AB001B0A25 /* SceneDelegate.swift */,
-				F91E19E126F7A96100C77529 /* ViewControllers */,
-				F9A8528C26E610B6001232DB /* Layouts */,
-				F91E19E226F7AA1F00C77529 /* ViewCells */,
+				F91E19E126F7A96100C77529 /* View Controllers */,
+				F91E19E726F8A6EB00C77529 /* Views */,
 				F98F816D26E351F700AD5EAD /* Models */,
-				F9A54C1B26F24E770079D46C /* Extensions */,
-				F98F817026E37E7D00AD5EAD /* Service */,
+				F98F817026E37E7D00AD5EAD /* Networking */,
 				F96BC40626DD40AC001B0A25 /* Assets.xcassets */,
 				F96BC40B26DD40AC001B0A25 /* Info.plist */,
 			);
@@ -138,35 +137,18 @@
 		F98F816D26E351F700AD5EAD /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F9C3021A26DFCE85001F0429 /* UnsplashModels.swift */,
+				F9C3021A26DFCE85001F0429 /* UnsplashModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		F98F817026E37E7D00AD5EAD /* Service */ = {
+		F98F817026E37E7D00AD5EAD /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				F98F817326E37EAE00AD5EAD /* Endpoint.swift */,
 				F98F817B26E3BD3E00AD5EAD /* DataLoader.swift */,
 			);
-			path = Service;
-			sourceTree = "<group>";
-		};
-		F9A54C1B26F24E770079D46C /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				F9A54C1C26F24EB90079D46C /* UIImage.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		F9A8528C26E610B6001232DB /* Layouts */ = {
-			isa = PBXGroup;
-			children = (
-				F9A54C1526F0FE270079D46C /* GalleryLayout.swift */,
-				F9D4DD5326EB62E0003EF6B7 /* TopicsGridLayout.swift */,
-			);
-			path = Layouts;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,12 +269,11 @@
 				F96BC40026DD40AB001B0A25 /* SceneDelegate.swift in Sources */,
 				F9A54C1F26F2680A0079D46C /* TopicsCollectionViewController.swift in Sources */,
 				F9A54C2126F503800079D46C /* GalleryCollectionViewController.swift in Sources */,
-				F9A54C1D26F24EB90079D46C /* UIImage.swift in Sources */,
 				F9A54C1626F0FE270079D46C /* GalleryLayout.swift in Sources */,
 				F9A8529526E90554001232DB /* PhotoViewController.swift in Sources */,
 				F98F817C26E3BD3E00AD5EAD /* DataLoader.swift in Sources */,
 				F91E19E426F7AF2700C77529 /* SearchCollectionViewController.swift in Sources */,
-				F9C3021B26DFCE85001F0429 /* UnsplashModels.swift in Sources */,
+				F9C3021B26DFCE85001F0429 /* UnsplashModel.swift in Sources */,
 				F9A54C1826F23C460079D46C /* MainTabBarController.swift in Sources */,
 				F91E19E626F8870900C77529 /* TopicCell.swift in Sources */,
 				F98F817426E37EAE00AD5EAD /* Endpoint.swift in Sources */,

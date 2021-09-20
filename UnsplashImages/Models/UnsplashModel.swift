@@ -1,5 +1,5 @@
 //
-//  UnsplashModels.swift
+//  UnsplashModel.swift
 //  UnsplashImages
 //
 //  Created by Andrii Shkliaruk on 01.09.2021.

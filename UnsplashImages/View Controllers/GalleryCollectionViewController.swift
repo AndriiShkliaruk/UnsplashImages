@@ -12,7 +12,13 @@ class GalleryCollectionViewController: UICollectionViewController, GalleryLayout
     
     var topicData: UnsplashTopic?
     private var photos = [UnsplashPhoto]()
-
+    
+    private let spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        return spinner
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,6 +26,7 @@ class GalleryCollectionViewController: UICollectionViewController, GalleryLayout
         
         setupNavigationBar()
         setupCollectionView()
+        setupSpinner()
         loadPhotos(by: topic.id)
     }
     
@@ -38,14 +45,21 @@ class GalleryCollectionViewController: UICollectionViewController, GalleryLayout
         collectionView.contentInsetAdjustmentBehavior = .automatic
     }
     
-
+    private func setupSpinner() {
+        view.addSubview(spinner)
+        spinner.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: collectionView.centerYAnchor).isActive = true
+        spinner.startAnimating()
+    }
+    
+    
     
     // MARK: - UICollectionViewDataSource, UICollectionViewDelegate
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.identifier, for: indexPath) as? PhotoCell else {
             return UICollectionViewCell()
@@ -68,9 +82,9 @@ class GalleryCollectionViewController: UICollectionViewController, GalleryLayout
     }
     
     
-
+    
     // MARK: - Navigation
-
+    
     private func navigateTo(photo: UnsplashPhoto) {
         let photoViewController = PhotoViewController()
         photoViewController.photoData = photo
@@ -91,9 +105,10 @@ class GalleryCollectionViewController: UICollectionViewController, GalleryLayout
                 DispatchQueue.main.async {
                     self.photos = results
                     self.collectionView.reloadData()
+                    self.spinner.stopAnimating()
                 }
             }
         }
     }
-
+    
 }
